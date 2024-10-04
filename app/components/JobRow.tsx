@@ -8,6 +8,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import Image from "next/image";
 
 export default function JobRow({ jobDoc }: { jobDoc: Job }) {
   const pathname = usePathname();
@@ -24,7 +25,7 @@ export default function JobRow({ jobDoc }: { jobDoc: Job }) {
           </div>
           <div className="flex flex-col lg:flex-row gap-4 items-start">
             <div className="w-[6rem] h-[6rem] lg:w-24 lg:h-24">
-              <img
+              <Image
                 src={jobDoc?.Jobicon}
                 alt="icon"
                 className="w-full h-full object-contain"

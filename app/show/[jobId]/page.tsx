@@ -23,7 +23,7 @@ export default async function SinglePageJob(props: PageProps) {
         </div>
         <div>
           {jobDoc?.jobIcon ? (
-            <img
+            <Image
               alt="jobIcon"
               src={jobDoc?.jobIcon}
               className="w-24 h-24 rounded-full mr-6 object-cover"
@@ -43,7 +43,7 @@ export default async function SinglePageJob(props: PageProps) {
         </h2>
         <div className="flex flex-col sm:flex-row items-center sm:items-start p-4 rounded-md space-y-4 sm:space-y-0 sm:space-x-6">
           {jobDoc?.contactPhoto ? (
-            <img
+            <Image
               src={jobDoc?.contactPhoto}
               alt="Contact"
               className="w-24 h-24 rounded-full object-cover"
