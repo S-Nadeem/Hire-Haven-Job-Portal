@@ -2,6 +2,7 @@ import type { Job } from "@/models/Job";
 import JobRow from "./JobRow";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
+import { JOBS_PAGE } from "../../utils/constants.js";
 export default function Jobs({
   header,
   jobs,
@@ -21,16 +22,16 @@ export default function Jobs({
           {!jobs?.length && (
             <div className="text-center bg-white p-8 rounded-lg shadow-md">
               <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-                No Jobs Found
+                {JOBS_PAGE.NO_JOBS_FOUND}
               </h2>
               <p className="text-gray-600 mb-8">
-                We're sorry, but we couldn't find any jobs
+                {JOBS_PAGE.NO_FIND_JOBS_FOUND}
               </p>
               <Link
                 href={"/new-listing"}
                 className="px-6 py-3 bg-green-500 text-white font-medium rounded-md hover:bg-green-600 transition duration-300"
               >
-                Explore More Jobs
+                {JOBS_PAGE.EXPLORE_JOBS}
               </Link>
             </div>
           )}

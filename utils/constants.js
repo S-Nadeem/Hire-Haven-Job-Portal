@@ -10,3 +10,9 @@ export const HERO_PAGE = {
   LAND_JOB: "Land Your Dream",
   JOB_TODAY: "Job Today",
 };
+
+export const JOBS_PAGE = {
+  NO_FIND_JOBS_FOUND: "We're sorry, but we couldn't find any jobs",
+  NO_JOBS_FOUND: "No Jobs Found",
+  EXPLORE_JOBS: "Explore Jobs",
+};
