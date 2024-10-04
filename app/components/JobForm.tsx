@@ -16,11 +16,8 @@ import {
 import "@radix-ui/themes/styles.css";
 import { useState } from "react";
 // @ts-expect-error: react-country-state-city lacks TypeScript types
-import {
-  CitySelect,
-  CountrySelect,
-  StateSelect,
-} from "react-country-state-city";
+// prettier-ignore
+import {CitySelect, CountrySelect, StateSelect,} from "react-country-state-city";
 import "react-country-state-city/dist/react-country-state-city.css";
 import { ImageUpload } from "./ImageUpload";
 import { saveJobAction } from "../actions/JobActions";
