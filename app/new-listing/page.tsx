@@ -28,6 +28,11 @@ export default async function JobListing() {
     );
   }
 
+  interface OrganizationMembershipType {
+    organizationId: string; // Ensure this matches the actual type
+    status: string; // Add other relevant properties as needed
+  }
+
   let organizationMemberShips: AutoPaginatable<OrganizationMembership> | null =
     null;
   if (user) {
@@ -37,8 +42,10 @@ export default async function JobListing() {
       });
   }
 
-  const activeOrganisationMemberShips: any =
-    organizationMemberShips?.data.filter((om) => om.status === "active");
+  const activeOrganisationMemberShips: OrganizationMembershipType[] = (
+    organizationMemberShips?.data || []
+  ).filter((om) => om.status === "active");
+
   const organizationNames: { [key: string]: string } = {};
   for (const activeMemberShip of activeOrganisationMemberShips) {
     const organization = await workos.organizations.getOrganization(
@@ -48,51 +55,49 @@ export default async function JobListing() {
   }
 
   return (
-    <>
-      <div className="flex flex-col items-center justify-center min-h-full bg-gray-50 p-4">
-        <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
-            {NEW_LISTING_CONSTANTS.YOUR_COMPANIES}
-          </h2>
-          <p className="text-gray-600 text-center mb-6">
-            {NEW_LISTING_CONSTANTS.SELECT_COMPANIES}
-          </p>
+    <div className="flex flex-col items-center justify-center min-h-full bg-gray-50 p-4">
+      <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
+          {NEW_LISTING_CONSTANTS.YOUR_COMPANIES}
+        </h2>
+        <p className="text-gray-600 text-center mb-6">
+          {NEW_LISTING_CONSTANTS.SELECT_COMPANIES}
+        </p>
 
-          <div className="w-full mb-6">
-            <div className="rounded-lg border divide-y divide-gray-200">
-              {Object.keys(organizationNames).map((orgId) => (
-                <Link
-                  key={orgId}
-                  href={"/new-listing/" + orgId}
-                  className="flex justify-between items-center px-4 py-3 hover:bg-gray-100 transition"
-                >
-                  <span className="text-gray-800">
-                    {organizationNames[orgId]}
-                  </span>
-                  <FontAwesomeIcon
-                    className="h-4 text-gray-500"
-                    icon={faArrowRight}
-                  />
-                </Link>
-              ))}
-            </div>
+        <div className="w-full mb-6">
+          <div className="rounded-lg border divide-y divide-gray-200">
+            {Object.keys(organizationNames).map((orgId) => (
+              <Link
+                key={orgId}
+                href={"/new-listing/" + orgId}
+                className="flex justify-between items-center px-4 py-3 hover:bg-gray-100 transition"
+              >
+                <span className="text-gray-800">
+                  {organizationNames[orgId]}
+                </span>
+                <FontAwesomeIcon
+                  className="h-4 text-gray-500"
+                  icon={faArrowRight}
+                />
+              </Link>
+            ))}
           </div>
-
-          {!organizationMemberShips?.data && (
-            <div className="border border-blue-200 bg-blue-50 p-4 rounded-lg text-center text-blue-700 mb-6">
-              {NEW_LISTING_CONSTANTS.NO_COMPANIES}
-            </div>
-          )}
-
-          <Link
-            href="/new-company"
-            className="w-full bg-gray-200 px-4 py-3 text-center rounded-lg text-gray-800 hover:bg-gray-300 inline-flex justify-center items-center gap-2 transition"
-          >
-            Create a New Company Profile
-            <FontAwesomeIcon className="h-4" icon={faArrowRight} />
-          </Link>
         </div>
+
+        {!organizationMemberShips?.data && (
+          <div className="border border-blue-200 bg-blue-50 p-4 rounded-lg text-center text-blue-700 mb-6">
+            {NEW_LISTING_CONSTANTS.NO_COMPANIES}
+          </div>
+        )}
+
+        <Link
+          href="/new-company"
+          className="w-full bg-gray-200 px-4 py-3 text-center rounded-lg text-gray-800 hover:bg-gray-300 inline-flex justify-center items-center gap-2 transition"
+        >
+          Create a New Company Profile
+          <FontAwesomeIcon className="h-4" icon={faArrowRight} />
+        </Link>
       </div>
-    </>
+    </div>
   );
 }

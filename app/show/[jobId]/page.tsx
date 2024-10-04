@@ -1,6 +1,8 @@
 import { JobModel } from "@/models/Job";
 import mongoose from "mongoose";
 import Image from "next/image";
+import JobIconDefault from "../../../assests/jobIconDefault.png";
+import userImage from "../../../assests/userImage.png";
 
 type PageProps = {
   params: {
@@ -28,9 +30,17 @@ export default async function SinglePageJob(props: PageProps) {
               src={jobDoc?.jobIcon}
               className="w-24 h-24 rounded-full mr-6 object-cover"
               loading="lazy"
+              width={96}
+              height={96}
             />
           ) : (
-            ""
+            <Image
+              src={JobIconDefault}
+              alt="icon"
+              className="w-[65%] h-[65%] object-contain"
+              width={70}
+              height={70}
+            />
           )}
         </div>
       </div>
@@ -48,9 +58,17 @@ export default async function SinglePageJob(props: PageProps) {
               alt="Contact"
               className="w-24 h-24 rounded-full object-cover"
               loading="lazy"
+              width={96}
+              height={96}
             />
           ) : (
-            ""
+            <Image
+              src={userImage}
+              alt="icon"
+              className="w-24 h-24 rounded-full object-cover"
+              width={70}
+              height={70}
+            />
           )}
 
           <div className="text-left">

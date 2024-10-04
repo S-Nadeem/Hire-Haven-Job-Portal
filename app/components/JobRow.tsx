@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import Image from "next/image";
+import JobIconDefault from "../../assests/jobIconDefault.png";
 
 export default function JobRow({ jobDoc }: { jobDoc: Job }) {
   const pathname = usePathname();
@@ -25,11 +26,23 @@ export default function JobRow({ jobDoc }: { jobDoc: Job }) {
           </div>
           <div className="flex flex-col lg:flex-row gap-4 items-start">
             <div className="w-[6rem] h-[6rem] lg:w-24 lg:h-24">
-              <Image
-                src={jobDoc?.Jobicon}
-                alt="icon"
-                className="w-full h-full object-contain"
-              />
+              {!jobDoc?.Jobicon ? (
+                <Image
+                  src={JobIconDefault}
+                  alt="icon"
+                  className="w-[65%] h-[65%] object-contain"
+                  width={70}
+                  height={70}
+                />
+              ) : (
+                <Image
+                  src={jobDoc?.Jobicon}
+                  alt="icon"
+                  className="w-full h-full object-contain"
+                  width={96}
+                  height={96}
+                />
+              )}
             </div>
             <div className="flex-grow">
               <div className="flex flex-col justify-between h-full">
