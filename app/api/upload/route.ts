@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
   const newFilename = `${uniqid()}-${file.name}`;
 
   const chunks: Uint8Array[] = [];
-  // @ts-expect-error
+  // @ts-expect-error: file Stream lacks typeScript Types
   for await (const chunk of file.stream()) {
     chunks.push(chunk);
   }

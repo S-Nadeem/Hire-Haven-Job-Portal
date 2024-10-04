@@ -49,6 +49,10 @@ export default function JobForm({
     const jobDoc = await saveJobAction(data);
     redirect(`/jobs/${jobDoc.orgId}`);
   };
+  interface LocationOption {
+    id: string;
+    name: string;
+  }
   return (
     <Theme>
       <form action={handleSaveJob} className="container flex flex-col gap-4">
@@ -96,7 +100,7 @@ export default function JobForm({
           <div className="flex flex-col sm:flex-row gap-4 *:grow mt-2">
             <CountrySelect
               value={countryId ? { id: countryId, name: countryName } : null}
-              onChange={(e: any) => {
+              onChange={(e: LocationOption) => {
                 setCountrId(e.id);
                 setcountryName(e.name);
               }}
@@ -106,7 +110,7 @@ export default function JobForm({
             <StateSelect
               value={stateId ? { id: stateId, name: stateName } : null}
               countryid={countryId}
-              onChange={(e: any) => {
+              onChange={(e: LocationOption) => {
                 setstateId(e.id);
                 setstateName(e.name);
               }}
@@ -117,7 +121,7 @@ export default function JobForm({
               value={cityId ? { id: cityId, name: cityName } : null}
               countryid={countryId}
               stateid={stateId}
-              onChange={(e: any) => {
+              onChange={(e: LocationOption) => {
                 setcityId(e.id);
                 setcityName(e.name);
               }}
