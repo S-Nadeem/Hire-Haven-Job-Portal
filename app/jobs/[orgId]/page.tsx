@@ -1,12 +1,7 @@
 import Jobs from "@/app/components/Jobs";
 import { addOrgData, JobModel } from "@/models/Job";
 import { getUser } from "@workos-inc/authkit-nextjs";
-import {
-  AutoPaginatable,
-  OrganizationMembership,
-  WorkOS,
-} from "@workos-inc/node";
-import mongoose from "mongoose";
+import { WorkOS } from "@workos-inc/node";
 import React from "react";
 
 type PageProps = {

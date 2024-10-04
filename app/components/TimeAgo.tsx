@@ -1,5 +1,5 @@
 "use client";
-// @ts-ignore
+// @ts-expect-error
 
 import ReactTimeAgo from "react-timeago";
 export default function TimeAgo({ createdAt }: { createdAt: string }) {

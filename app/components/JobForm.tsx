@@ -15,7 +15,7 @@ import {
 } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import { useState } from "react";
-// @ts-ignore
+// @ts-expect-error
 // prettier-ignore
 import {CitySelect, CountrySelect, StateSelect,} from "react-country-state-city";
 import "react-country-state-city/dist/react-country-state-city.css";

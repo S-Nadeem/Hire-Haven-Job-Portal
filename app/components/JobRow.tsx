@@ -9,8 +9,6 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
-// @ts-ignore
-
 export default function JobRow({ jobDoc }: { jobDoc: Job }) {
   const pathname = usePathname();
   const orgPagePath = `/jobs/${jobDoc?.orgId}`;

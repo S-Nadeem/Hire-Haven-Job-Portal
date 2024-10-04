@@ -1,6 +1,6 @@
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { NextRequest } from "next/server";
-// @ts-ignore
+// @ts-expect-error
 import uniqid from "uniqid";
 
 export async function POST(req: NextRequest) {
@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
   const newFilename = `${uniqid()}-${file.name}`;
 
   const chunks: Uint8Array[] = [];
-  // @ts-ignore
+  // @ts-expect-error
   for await (const chunk of file.stream()) {
     chunks.push(chunk);
   }
