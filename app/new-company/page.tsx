@@ -4,12 +4,18 @@ import React from "react";
 
 export default async function CreateNewCompany() {
   const { user } = await getUser();
+
   async function handleNewCompanyFormSubmit(data: FormData) {
     "use server";
     if (user) {
       await createCompany(data.get("newCompanyName") as string, user.id);
     }
   }
+
+  if (!user) {
+    ("Login to use this page");
+  }
+
   return (
     <>
       <div className="flex items-center justify-center min-h-full bg-gray-100">
