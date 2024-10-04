@@ -15,6 +15,7 @@ import {
 } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import { useState } from "react";
+// @ts-expect-error: react-country-state-city lacks TypeScript types
 import {
   CitySelect,
   CountrySelect,
@@ -25,7 +26,6 @@ import { ImageUpload } from "./ImageUpload";
 import { saveJobAction } from "../actions/JobActions";
 import { redirect } from "next/navigation";
 import type { Job } from "@/models/Job";
-const { Country, State, City } = require("react-country-state-city");
 
 export default function JobForm({
   orgId,
