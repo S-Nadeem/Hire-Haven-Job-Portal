@@ -29,8 +29,8 @@ export default async function JobListing() {
   }
 
   interface OrganizationMembershipType {
-    organizationId: string; // Ensure this matches the actual type
-    status: string; // Add other relevant properties as needed
+    organizationId: string;
+    status: string;
   }
 
   let organizationMemberShips: AutoPaginatable<OrganizationMembership> | null =
